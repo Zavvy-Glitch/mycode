@@ -8,9 +8,9 @@ from random import choice
 
 def main():
 
-    wordbank= ["indentation", "spaces"]
+    wordbank = ["indentation", "spaces"]
 
-    tlgstudents= ["Cat", "Chris", "Dao", "David", "Henwin", "Herman", "Jose", "Justin", "Kris", "Mannie", "Marcos", "Marshall", "Michael", "Mike", "Nikko", "Phil", "Ryan", "Sachin", "Samekh", "Will"]
+    tlgstudents = ["Cat", "Chris", "Dao", "David", "Henwin", "Herman", "Jose", "Justin", "Kris", "Mannie", "Marcos", "Marshall", "Michael", "Mike", "Nikko", "Phil", "Ryan", "Sachin", "Samekh", "Will"]
 
     # this will add the integer 4 to the wordbank list
     wordbank.append(4)
