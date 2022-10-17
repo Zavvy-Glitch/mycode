@@ -8,4 +8,3 @@ name= input("What is your name?\n>")
 # Hi <name>! Welcome to Day 2 of Python Training!
 
 print(f"Hi {name.upper()}! Welcome to Day {mylist[1]} of {mylist[5]} Training!")
-
