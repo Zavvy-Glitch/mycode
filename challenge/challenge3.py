@@ -22,7 +22,7 @@ def main():
             - Type in a student's name
             - Type in the word 'random'""")
 
-    # save the user's input as the variable "choice"
+    # save the user's input as the variable "selection"
     selection = input(">")
 
     # if the number entered by the user can be
@@ -45,7 +45,6 @@ def main():
         name = choice(tlgstudents)
 
     # Use an f-string to neatly combine these elements into a sentence.
-    print(f"Your victims name is {name}")
     print(f"{name} always uses {wordbank[2]} {wordbank[1]} for {wordbank[0]}.")
 
 main()
