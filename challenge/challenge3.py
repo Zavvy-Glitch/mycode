@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+""" TLG Cohort D23 / CChea
+    Challenge 20 Exercise: Lists, Input, Print, Variables """
 
 # the choice() function from the random module
 # will choose a random element from a list
 from random import choice
+
+def main():
 
 wordbank= ["indentation", "spaces"]
 
@@ -39,6 +43,7 @@ else:
     name = choice(tlgstudents)
 
 # Use an f-string to neatly combine these elements into a sentence.
-print(f"{name} always uses {wordbank[2]} {wordbank[1]} to indent.")
+print(f"Your victims name is {name}")
+print(f"{name} always uses {wordbank[2]} {wordbank[1]} for {wordbank[0]}.")
 
-
+main()
