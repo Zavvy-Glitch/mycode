@@ -2,21 +2,22 @@
 """ TLG Cohort D23 | CChea
     Text Based Adventure Game """
 import introScene
-import endScene
+import showBigCat
 
 def main():
-    direction = ["left", "right"]
-    print("You hear the soft breakage of leaves and twigs nearby. Your adrenaline rises. Where would you like to go?")
+    direction = ["left", "right", "backward"]
+    print("You hear the soft breakage of leaves and twigs nearby. You accidently anger a collective of wild boars. Your adrenaline rises. Where should you go?")
     userInput = ""
     while userInput not in direction:
         print("Options: right, left, backward")
         userInput = input()
         if userInput == "right":
-            introScene()
+            introScene.main()
         elif userInput == "left":
-            print("You find that vines magically grew to create a wall to stop you from going back. Your only option is to find another path forward")
+            print("Luckily, the boars are too frieghtened. You escaped with ease.")
+            showBigCat.main()
         elif userInput == "backward":
-            endScene()
+            introScene.main()
         else:
             print("Please choose a valid option")
 

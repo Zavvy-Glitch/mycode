@@ -2,24 +2,24 @@
 """ TLG Cohort D23 | CChea
     Text Based Adventure Game """
 
-import showBigCat
-import showBeast
+import introScene
 import showVillage
 
 def main():
     direction = ["left", "right", "forward", "backward"]
-    print("You've found yourself at a 3 pronged path, again you can choose any direction you'd like to follow. Where would you like to proceed?")
+    print("You hear strange howling coming from amongst the surrounding forest. Where would you like to go?")
     userInput = ""
     while userInput not in direction:
         print("Options: Left/Right/Backward/Forward")
         userInput = input()
         if userInput.lower() == "left":
-            showBigCat.main()
+            print("You've found yourself amongst a clutter of ocelots. Overwhelmed by their numbers they've mauled you to death.")
+            quit()
         elif userInput.lower() == "right":
-            showBeast.main()
+            introScene.main()
         elif userInput.lower() == "backward":
-            print("You find that vines magically grew to create a wall to stop you from going back. Your only option is to find another path forward")
-            main()
+            print("You found your way out! Congrats you've found the pyraminds!")
+            quit()
         elif userInput.lower() == "forward":
             showVillage.main()
         else:
