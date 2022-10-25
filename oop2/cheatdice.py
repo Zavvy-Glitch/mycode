@@ -29,3 +29,10 @@ class Cheat_Loaded_Dice(Player):
             if self.dice[i] < 6:
                 self.dice[i] += 1
             i += 1
+
+class Mulligan_Cheater(Player):
+    def cheat(self):
+        if sum(self.dice) <= 17:
+            self.dice = []
+            for i in range(3):
+                self.dice.append(randint(1,6))
