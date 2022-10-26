@@ -3,6 +3,13 @@
 """ TLG Cohort D23 | CChea
     Implement simple game frameowrk with a dictionary object """
 
+import requests
+from random import randint
+
+def monster():
+    pokeapi = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(randint(1,151))).json()
+    print(pokeapi["sprites"]["front_default"])
+
 def show_instructions():
     """ Show Game Instructions When Invoked """
     print('''
@@ -99,9 +106,11 @@ while True:
             print('Can\'t get' + move_choice[1] + '!')
     if 'item' in rooms[current_room] and 'monster' in rooms[current_room]['item']:
         if 'narsil' in inventory:
+            monster()
             print('YOU LUCKED OUT! You have Narsil! YOU SLAY THE MONSTER!')
             del rooms[current_room]['item']
         else:
+            monster()
             print('''
             A Monster has appeared! 
             You\'re defenseless! 
