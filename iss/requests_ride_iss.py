@@ -23,12 +23,12 @@ def main():
     helmetson = groundctrl.json()
 
     # prints pythonic data
-    print("\n\nConverted Python Data")
+    print("\n\nConverted Python Data\n")
     print(helmetson)
 
     print('\n\nPeople in Space:', str(helmetson['number']))
     for astro in helmetson['people']:
-        print('Astronaut:', astro["name"] + '\nAssigned Ship:', astro["craft"])
+        print('Astronaut:', astro["name"] + '\nAssigned Ship:', astro["craft"] + '\n')
 
 if __name__ == "__main__":
     main()
