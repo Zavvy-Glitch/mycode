@@ -41,7 +41,7 @@ class ConverterUi(tk.Tk):
         self.geometry("500x200")
 
         # Labeling
-        self.intro_label = Label(self, text='Currency Converter', fg='gray', relief=tk.RAISED, borderwidth=3)
+        self.intro_label = Label(self, text='Currency Converter', background='blue', fg='white', relief=tk.RIDGE, borderwidth=3)
         self.intro_label.config(font=('Sans-Serif', 15, 'bold'))
 
         self.date_label = Label(self, text=f"1 Czech Koruna = {self.curr_converter.converter('CZK', 'USD', 1)} USD \n "
