@@ -6,18 +6,13 @@ import tkinter as tk
 from tkinter import ttk
 import re
 
-URL = 'https://api.exchangerate-api.com/v4/latest/USD'
-
 
 class RTConverter:
 
-    def __init__(self, url):
+    def __init__(self, rturl):
         """ Retrieves Data from URL """
-        try:
-            self.data = requests.get(url).json()
-            self.currency = self.data['rates']
-        except:
-            print("Unable to Reach Path, Try Again")
+        self.data = requests.get(rturl).json()
+        self.currency = self.data['rates']
 
     def converter(self, from_currency, to_currency, amount):
         """ Converts specified currencies """
@@ -36,10 +31,10 @@ class RTConverter:
 
 
 class ConverterUi(tk.Tk):
-    def __init__(self, converter):
+    def __init__(self, uiconverter):
         tk.Tk.__init__(self)
         self.title = "CURRENCY EXCHANGE"
-        self.curr_converter = converter
+        self.curr_converter = uiconverter
 
         # create converter display
         self.geometry("500x200")
@@ -109,9 +104,10 @@ class ConverterUi(tk.Tk):
     @staticmethod
     def restrict_number_only(string):
         """ restricts numbers to only convert when integers are used """
+        stringdata = string
         regex = re.compile(r"[0-9,]*?(\.)?[0-9,]*$")
-        result = regex.match(string)
-        return string == "" or (string.count('.') <= 1 and result is not None)
+        result = regex.match(stringdata)
+        return stringdata == "" or (stringdata.count('.') <= 1 and result is not None)
 
 
 if __name__ == '__main__':
