@@ -65,6 +65,8 @@ class ConverterUi(tk.Tk):
         # dropdown menu #1
         self.from_currency_variable = StringVar(self)
         self.from_currency_variable.set("CZK")  # default value
+
+        # drop down menu #2
         self.to_currency_variable = StringVar(self)
         self.to_currency_variable.set("USD")  # default value
 
