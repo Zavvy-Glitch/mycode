@@ -32,6 +32,7 @@ class RTConverter:
 
 class ConverterUi(tk.Tk):
     def __init__(self, uiconverter):
+        """ Initiates GUI """
         tk.Tk.__init__(self)
         self.title = "CURRENCY EXCHANGE"
         self.curr_converter = uiconverter
