@@ -11,6 +11,7 @@ version: 1.0.0
 - API URL : https://api.exchangerate-api.com/v4/latest/USD
 
 ### Resources:
+- [WS3 Schools: Regex](https://www.w3schools.com/python/python_regex.asp)
 - [Tkinter](https://docs.python.org/3/library/tkinter.html)
 - [Mark Down Guide](https://www.markdownguide.org/basic-syntax/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
