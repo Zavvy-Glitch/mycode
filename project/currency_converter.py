@@ -12,12 +12,15 @@ URL = 'https://api.exchangerate-api.com/v4/latest/USD'
 class RTConverter:
 
     def __init__(self, url):
-        """Retrieves Data from URL"""
-        self.data = requests.get(url).json()
-        self.currency = self.data['rates']
+        """ Retrieves Data from URL """
+        try:
+            self.data = requests.get(url).json()
+            self.currency = self.data['rates']
+        except:
+            print("Unable to Reach Path, Try Again")
 
     def converter(self, from_currency, to_currency, amount):
-        """Converts specified currencies """
+        """ Converts specified currencies """
         # Takes in arguments
         # - from_currency: from which currency you will want to convert
         # - to_currency: which currency you will want to convert to
@@ -101,7 +104,6 @@ class ConverterUi(tk.Tk):
         converted_amount = self.curr_converter.converter(from_curr, to_curr, amount)
         # will round the decimal places up or down up to 2 decimal places
         converted_amount = round(converted_amount, 2)
-
         self.converted_amount_field_label.config(text=str(converted_amount))
 
     @staticmethod
