@@ -6,9 +6,11 @@
 import requests
 from random import randint
 
+
 def monster():
-    pokeapi = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(randint(1,151))).json()
+    pokeapi = requests.get("https://pokeapi.co/api/v2/pokemon/" + str(randint(1, 151))).json()
     print(pokeapi["sprites"]["front_default"])
+
 
 def show_instructions():
     """ Show Game Instructions When Invoked """
@@ -27,6 +29,7 @@ def show_instructions():
         get [item] 
         ''')
 
+
 def show_status():
     """ Determines the current status of the player """
 
@@ -41,42 +44,43 @@ def show_status():
         print(f'You notice there\'s a {rooms[current_room]["item"]}')
     print('--------------------------------------------')
 
+
 # variable to contain an emty list for inventory
 inventory = []
 
 # variable to contain a dictionary of interconnected rooms
 rooms = {
-        'Hall' : {
-            'south' : 'Kitchen'
-            },
-        'Kitchen' : {
-            'north' : 'Hall',
-            'east' : 'Parlor',
-            'west' : 'Dining Room',
-            'south': 'Garage',
-            'item' : 'key'
-            },
-        'Parlor' : {
-            'west' : 'Kitchen',
-            'north' : 'Dining Room',
-            'east' : 'Garage',
-            'item' : 'monster'
-            },
-        'Dining Room' : {
-            'south' : 'Parlor',
-            'east' : 'Kitchen',
-            'north' : 'Garden',
-            'item' : 'potion'
-            },
-        'Garage' : {
-            'north' : 'Kitchen',
-            'west' : 'Parlor',
-            'item' : 'narsil'
-            },
-        'Garden' : {
-            'south': 'Dining Room'
-            }
-        }
+    'Hall': {
+        'south': 'Kitchen'
+    },
+    'Kitchen': {
+        'north': 'Hall',
+        'east': 'Parlor',
+        'west': 'Dining Room',
+        'south': 'Garage',
+        'item': 'key'
+    },
+    'Parlor': {
+        'west': 'Kitchen',
+        'north': 'Dining Room',
+        'east': 'Garage',
+        'item': 'monster'
+    },
+    'Dining Room': {
+        'south': 'Parlor',
+        'east': 'Kitchen',
+        'north': 'Garden',
+        'item': 'potion'
+    },
+    'Garage': {
+        'north': 'Kitchen',
+        'west': 'Parlor',
+        'item': 'narsil'
+    },
+    'Garden': {
+        'south': 'Dining Room'
+    }
+}
 
 current_room = 'Hall'
 

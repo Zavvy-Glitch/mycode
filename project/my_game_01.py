@@ -3,6 +3,7 @@
 """ TLG Cohort D23 | CChea
     Implement simple game frameowrk with a dictionary object """
 
+
 def showInstructions():
     """ Show Game Instructions When Invoked """
     print('''
@@ -19,6 +20,7 @@ def showInstructions():
         get [item] 
         ''')
 
+
 def showStatus():
     """ Determines the current status of the player """
 
@@ -33,43 +35,44 @@ def showStatus():
         print(f'You notice there\'s a {rooms[currentRoom]["item"]}')
     print('--------------------------------------------')
 
-# variable to contain an emty list for inventory
+
+# variable to contain an empty list for inventory
 inventory = []
 
 # variable to contain a dictionary of interconnected rooms
 rooms = {
-        'Hall' : {
-            'south' : 'Kitchen'
-            },
-        'Kitchen' : {
-            'north' : 'Hall',
-            'east' : 'Parlor',
-            'west' : 'Dining Room',
-            'south': 'Garage',
-            'item' : 'key'
-            },
-        'Parlor' : {
-            'west' : 'Kitchen',
-            'north' : 'Dining Room',
-            'east' : 'Garage',
-            'item' : 'monster'
-            },
-        'Dining Room' : {
-            'south' : 'Parlor',
-            'east' : 'Kitchen',
-            'north' : 'Garden',
-            'item' : 'potion'
-            },
-        'Garage' : {
-            'north' : 'Kitchen',
-            'west' : 'Parlor',
-            'item' : 'narsil'
-            },
-        'Garden' : {
-            'south': 'Dining Room'
-            }
+    'Hall': {
+        'south': 'Kitchen'
+    },
+    'Kitchen': {
+        'north': 'Hall',
+        'east': 'Parlor',
+        'west': 'Dining Room',
+        'south': 'Garage',
+        'item': 'key'
+    },
+    'Parlor': {
+        'west': 'Kitchen',
+        'north': 'Dining Room',
+        'east': 'Garage',
+        'item': 'monster'
+    },
+    'Dining Room': {
+        'south': 'Parlor',
+        'east': 'Kitchen',
+        'north': 'Garden',
+        'item': 'potion'
+    },
+    'Garage': {
+        'north': 'Kitchen',
+        'west': 'Parlor',
+        'item': 'narsil'
+    },
+    'Garden': {
+        'south': 'Dining Room'
+    }
 
-        }
+}
 
 currentRoom = 'Hall'
 
@@ -81,7 +84,6 @@ while True:
     move = ''
     while move == '':
         move = input('> ')
-
 
     move = move.lower().split(" ", 1)
 
@@ -107,7 +109,7 @@ while True:
         else:
             print('A Monster has appeared! You\'re defenseless! You\'ve been mauled to death! GAME OVER!')
             break
-    
+
     if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
         print('YOU ESCAPED! You were able to find the needed healing potion and Narsil(?) is that a win?')
         break
