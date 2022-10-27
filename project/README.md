@@ -4,6 +4,7 @@ version: 1.0.0
 ## Prerequisites:
 - requests : pip install requests
 - tkinter : pip install tkinter
+- re : import in
 
 ## Will Needs:
 - PyCharm : can be downloaded from the list of resources below

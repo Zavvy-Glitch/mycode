@@ -4,6 +4,7 @@ import requests
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+import re
 
 URL = 'https://api.exchangerate-api.com/v4/latest/USD'
 
@@ -23,7 +24,6 @@ class RTConverter:
         # - amount: how much currency you will want to convert
 
         # Will want to convert currency type to USD, if not already USD.
-        initial_amount = amount
         if from_currency != 'USD':
             amount = amount / self.currency[from_currency]
 
@@ -38,7 +38,7 @@ class ConverterUi(tk.Tk):
         self.title = "CURRENCY EXCHANGE"
         self.curr_converter = converter
 
-        # creating converter display
+        # create converter display
         self.geometry("500x200")
 
         # Labeling
@@ -55,9 +55,11 @@ class ConverterUi(tk.Tk):
         # Building UI Features
 
         # Entry box
-        valid = (self.register(self.restrictNumberOnly), '%d', '%P')
-        # restrictNumberOnly function will restrict these user to enter invalid number in Amount field. We will
-        # define it later in code
+        valid = (self.register(self.restrict_number_only), '%d', '%P')
+        # restrict_number_only is further down
+        # restrict_number_only is used to inhibit users to only using numerical values
+        # %d specifies to also exclude any integers containing decimals and any placeholders
+
         self.amount_field = Entry(self, bd=3, relief=tk.RIDGE, justify=tk.CENTER, validate='key', validatecommand=valid)
         self.converted_amount_field_label = Label(self, text='', fg='black', bg='white', relief=tk.RIDGE,
                                                   justify=tk.CENTER, width=17, borderwidth=3)
@@ -102,7 +104,8 @@ class ConverterUi(tk.Tk):
 
         self.converted_amount_field_label.config(text=str(converted_amount))
 
-    def restrictNumberOnly(self, action, string):
+    @staticmethod
+    def restrict_number_only(string):
         """ restricts numbers to only convert when integers are used """
         regex = re.compile(r"[0-9,]*?(\.)?[0-9,]*$")
         result = regex.match(string)
