@@ -11,7 +11,7 @@ version: 1.0.0
 - API URL : https://api.exchangerate-api.com/v4/latest/USD
 
 ### Current UI
-![tkinter](tkinter.JPG)
+![tkinter](lib/tkinter.JPG)
 
 ### Resources:
 - [WS3 Schools: Regex](https://www.w3schools.com/python/python_regex.asp)
@@ -27,4 +27,4 @@ version: 1.0.0
 ### Stretch Goal
  - Learn how to refactor this to separate the classes into its own module.
 
-![pylint](pylintV1.JPG)
+![pylint](lib/pylintV1.JPG)
