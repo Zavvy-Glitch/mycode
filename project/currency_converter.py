@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-import requests
-from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+from tkinter import *
 import re
+import requests
 
 
 class RTConverter:
@@ -36,18 +36,18 @@ class ConverterUi(tk.Tk):
         tk.Tk.__init__(self)
         self.title = "CURRENCY EXCHANGE"
         self.curr_converter = uiconverter
+        self.count = ""
 
         # create converter display
         self.geometry("500x200")
 
         # Labeling
-        self.intro_label = Label(self, text='Currency Converter', background='blue', fg='white', relief=tk.RIDGE, borderwidth=3)
+        self.intro_label = Label(self, text='Currency Converter', fg='black', relief=tk.RIDGE, borderwidth=3)
         self.intro_label.config(font=('Sans-Serif', 15, 'bold'))
 
         self.date_label = Label(self, text=f"1 Czech Koruna = {self.curr_converter.converter('CZK', 'USD', 1)} USD \n "
                                            f"Date : {self.curr_converter.data['date']}", relief=tk.RIDGE,
                                 borderwidth=5)
-
         self.intro_label.place(x=10, y=5)
         self.date_label.place(x=160, y=50)
 
@@ -58,7 +58,6 @@ class ConverterUi(tk.Tk):
         # restrict_number_only is further down
         # restrict_number_only is used to inhibit users to only using numerical values
         # %d specifies to also exclude any integers containing decimals and any placeholders
-
         self.amount_field = Entry(self, bd=3, relief=tk.RIDGE, justify=tk.CENTER, validate='key', validatecommand=valid)
         self.converted_amount_field_label = Label(self, text='', fg='black', bg='white', relief=tk.RIDGE,
                                                   justify=tk.CENTER, width=17, borderwidth=3)
@@ -100,15 +99,14 @@ class ConverterUi(tk.Tk):
         converted_amount = self.curr_converter.converter(from_curr, to_curr, amount)
         # will round the decimal places to 2 decimal places
         converted_amount = round(converted_amount, 2)
+        # will output converted amount as string inside convert amount[field_label]
         self.converted_amount_field_label.config(text=str(converted_amount))
 
-    @staticmethod
-    def restrict_number_only(string):
+    def restrict_number_only(self):
         """ restricts numbers to only convert when integers are used """
-        stringdata = string
-        regex = re.compile(r"[0-9,]*?(\.)?[0-9,]*$")
-        result = regex.match(stringdata)
-        return stringdata == "" or (stringdata.count('.') <= 1 and result is not None)
+        regex = re.compile(r'[0-9,]*?(\.)?[0-9,]*$')
+        result = str(regex.match(self))
+        return self == "" or (self.count <= "1" and result is not None)
 
 
 if __name__ == '__main__':
