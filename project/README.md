@@ -10,6 +10,8 @@ version: 1.0.0
 - PyCharm : can be downloaded from the list of resources below
 - API URL : https://api.exchangerate-api.com/v4/latest/USD
 
+
+
 ### Resources:
 - [WS3 Schools: Regex](https://www.w3schools.com/python/python_regex.asp)
 - [Tkinter](https://docs.python.org/3/library/tkinter.html)

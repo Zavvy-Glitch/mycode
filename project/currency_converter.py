@@ -8,10 +8,11 @@ import requests
 
 
 class RTConverter:
-
     def __init__(self, rturl):
-        """ Retrieves Data from URL """
+        """ Retrieves Data from URL"""
         self.data = requests.get(rturl).json()
+        # data checkpoint: print(self.data['date'], self.data['time_last_updated'])
+        # entry point of data needed: "rates": <- everything before credits
         self.currency = self.data['rates']
 
     def converter(self, from_currency, to_currency, amount):
@@ -36,7 +37,7 @@ class ConverterUi(tk.Tk):
         tk.Tk.__init__(self)
         self.title = "CURRENCY EXCHANGE"
         self.curr_converter = uiconverter
-        self.count = ""
+        self.count = " "
 
         # create converter display
         self.geometry("500x200")
@@ -56,8 +57,7 @@ class ConverterUi(tk.Tk):
         # Entry box
         valid = (self.register(self.restrict_number_only), '%d', '%P')
         # restrict_number_only is further down
-        # restrict_number_only is used to inhibit users to only using numerical values
-        # %d specifies to also exclude any integers containing decimals and any placeholders
+        # restrict_number_only is used to filter to only accept numerical values
         self.amount_field = Entry(self, bd=3, relief=tk.RIDGE, justify=tk.CENTER, validate='key', validatecommand=valid)
         self.converted_amount_field_label = Label(self, text='', fg='black', bg='white', relief=tk.RIDGE,
                                                   justify=tk.CENTER, width=17, borderwidth=3)
@@ -91,7 +91,7 @@ class ConverterUi(tk.Tk):
         self.convert_button.place(x=225, y=135)
 
     def perform(self, ):
-        # this will take from the inputted from self.amount_field and convert the amount
+        """ Takes input from amount_field and converts amount """
         amount = float(self.amount_field.get())
         from_curr = self.from_currency_variable.get()
         to_curr = self.to_currency_variable.get()
