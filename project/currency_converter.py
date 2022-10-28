@@ -1,19 +1,26 @@
 #!/usr/bin/python3
 
+""" TLG Cohort D23 | CChea
+    Final Project: Currency Exchange """
+
 import tkinter as tk
 from tkinter import ttk
-from tkinter import *
+from tkinter import Label, Entry, StringVar, Button, mainloop
 import re
 import requests
 
 
 class RTConverter:
+    """ Class for Conversion """
     def __init__(self, rturl):
         """ Retrieves Data from URL"""
-        self.data = requests.get(rturl).json()
-        # data checkpoint: print(self.data['date'], self.data['time_last_updated'])
-        # entry point of data needed: "rates": <- everything before credits
-        self.currency = self.data['rates']
+        try:
+            self.data = requests.get(rturl).json()
+            # data checkpoint: print(self.data['date'], self.data['time_last_updated'])
+            # entry point of data needed: "rates": <- everything before credits
+            self.currency = self.data['rates']
+        except Exception as e:
+            print(f' caught {type(e)}: e')
 
     def converter(self, from_currency, to_currency, amount):
         """ Converts specified currencies """
@@ -32,6 +39,9 @@ class RTConverter:
 
 
 class ConverterUi(tk.Tk):
+    """ Interface to query conversions by:
+        https://api.exchangerate-api.com/v4/latest/[AOA] or [USD]
+        Default: USD """
     def __init__(self, uiconverter):
         """ Initiates GUI """
         tk.Tk.__init__(self)
@@ -43,12 +53,21 @@ class ConverterUi(tk.Tk):
         self.geometry("500x200")
 
         # Labeling
-        self.intro_label = Label(self, text='Currency Converter', fg='black', relief=tk.RIDGE, borderwidth=3)
+        self.intro_label = Label(self,
+                                 text='Currency Converter',
+                                 fg='black',
+                                 relief=tk.RIDGE,
+                                 borderwidth=3)
+
         self.intro_label.config(font=('Sans-Serif', 15, 'bold'))
 
-        self.date_label = Label(self, text=f"1 Czech Koruna = {self.curr_converter.converter('CZK', 'USD', 1)} USD \n "
-                                           f"Date : {self.curr_converter.data['date']}", relief=tk.RIDGE,
+        self.date_label = Label(self,
+                                text=f"1 Czech Koruna = "
+                                     f"{self.curr_converter.converter('CZK', 'USD', 1)} USD \n "f"Date : "
+                                     f"{self.curr_converter.data['date']}",
+                                relief=tk.RIDGE,
                                 borderwidth=5)
+
         self.intro_label.place(x=10, y=5)
         self.date_label.place(x=160, y=50)
 
@@ -58,9 +77,21 @@ class ConverterUi(tk.Tk):
         valid = (self.register(self.restrict_number_only), '%d', '%P')
         # restrict_number_only is further down
         # restrict_number_only is used to filter to only accept numerical values
-        self.amount_field = Entry(self, bd=3, relief=tk.RIDGE, justify=tk.CENTER, validate='key', validatecommand=valid)
-        self.converted_amount_field_label = Label(self, text='', fg='black', bg='white', relief=tk.RIDGE,
-                                                  justify=tk.CENTER, width=17, borderwidth=3)
+        self.amount_field = Entry(self,
+                                  bd=3,
+                                  relief=tk.RIDGE,
+                                  justify=tk.CENTER,
+                                  validate='key',
+                                  validatecommand=valid)
+
+        self.converted_amount_field_label = Label(self,
+                                                  text='',
+                                                  fg='black',
+                                                  bg='white',
+                                                  relief=tk.RIDGE,
+                                                  justify=tk.CENTER,
+                                                  width=17,
+                                                  borderwidth=3)
 
         # dropdown menu #1
         self.from_currency_variable = StringVar(self)
@@ -72,12 +103,21 @@ class ConverterUi(tk.Tk):
 
         font = ("Courier", 12, "bold")
         self.option_add('*TCombobox*Listbox.font', font)
-        self.from_currency_dropdown = ttk.Combobox(self, textvariable=self.from_currency_variable,
-                                                   values=list(self.curr_converter.currency.keys()), font='Sans-Serif',
-                                                   state='readonly', width=12, justify=tk.CENTER)
-        self.to_currency_dropdown = ttk.Combobox(self, textvariable=self.to_currency_variable,
-                                                 values=list(self.curr_converter.currency.keys()), font='Sans-Serif',
-                                                 state='readonly', width=12, justify=tk.CENTER)
+        self.from_currency_dropdown = ttk.Combobox(self,
+                                                   textvariable=self.from_currency_variable,
+                                                   values=list(self.curr_converter.currency.keys()),
+                                                   font='Sans-Serif',
+                                                   state='readonly',
+                                                   width=12,
+                                                   justify=tk.CENTER)
+
+        self.to_currency_dropdown = ttk.Combobox(self,
+                                                 textvariable=self.to_currency_variable,
+                                                 values=list(self.curr_converter.currency.keys()),
+                                                 font='Sans-Serif',
+                                                 state='readonly',
+                                                 width=12,
+                                                 justify=tk.CENTER)
 
         # dimensional formatting
         self.from_currency_dropdown.place(x=30, y=120)
@@ -86,7 +126,11 @@ class ConverterUi(tk.Tk):
         self.converted_amount_field_label.place(x=346, y=150)
 
         # Conversion button
-        self.convert_button = Button(self, text="Convert", fg="black", command=self.perform)
+        self.convert_button = Button(self,
+                                     text="Convert",
+                                     fg="black",
+                                     command=self.perform)
+
         self.convert_button.config(font=('Courier', 10, 'bold'))
         self.convert_button.place(x=225, y=135)
 
@@ -110,7 +154,7 @@ class ConverterUi(tk.Tk):
 
 
 if __name__ == '__main__':
-    url = 'https://api.exchangerate-api.com/v4/latest/USD'
-    converter = RTConverter(url)
+    URL = 'https://api.exchangerate-api.com/v4/latest/USD'
+    converter = RTConverter(URL)
     ConverterUi(converter)
     mainloop()
