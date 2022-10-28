@@ -10,7 +10,8 @@ version: 1.0.0
 - PyCharm : can be downloaded from the list of resources below
 - API URL : https://api.exchangerate-api.com/v4/latest/USD
 
-
+### Current UI
+![tkinter](tkinter.JPG)
 
 ### Resources:
 - [WS3 Schools: Regex](https://www.w3schools.com/python/python_regex.asp)
@@ -22,4 +23,8 @@ version: 1.0.0
     - [Stack OverFlow](https://stackoverflow.com/)
     - [GeeksForGeeks](https://www.geeksforgeeks.org/python-programming-language/)
     - [Pyton Docs](https://docs.python.org/3/howto/functional.html)
+  
+### Stretch Goal
+ - Learn how to refactor this to separate the classes into its own module.
 
+![pylint](pylintV1.JPG)
