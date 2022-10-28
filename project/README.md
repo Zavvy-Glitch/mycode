@@ -1,14 +1,14 @@
 # Currency Converter - Python Project
 version: 1.0.0
 
-## Prerequisites:
-- requests : pip install requests
-- tkinter : pip install tkinter
-- re : import in
-
 ## Will Needs:
 - PyCharm : can be downloaded from the list of resources below
 - API URL : https://api.exchangerate-api.com/v4/latest/USD
+
+## Prerequisite dependencies:
+- requests : pip install requests
+- tkinter : pip install tkinter
+- re : import in
 
 ### Current UI
 ![tkinter](lib/tkinter.JPG)
@@ -22,9 +22,9 @@ version: 1.0.0
     - [Data Flair](https://data-flair.training/)
     - [Stack OverFlow](https://stackoverflow.com/)
     - [GeeksForGeeks](https://www.geeksforgeeks.org/python-programming-language/)
-    - [Pyton Docs](https://docs.python.org/3/howto/functional.html)
+    - [Python Docs](https://docs.python.org/3/howto/functional.html)
   
 ### Stretch Goal
- - Learn how to refactor this to separate the classes into its own module.
+  - Fix:
 
 ![pylint](lib/pylintV1.JPG)
