@@ -19,8 +19,8 @@ class RTConverter:
             # data checkpoint: print(self.data['date'], self.data['time_last_updated'])
             # entry point of data needed: "rates": <- everything before credits
             self.currency = self.data['rates']
-        except Exception as e:
-            print(f' caught {type(e)}: e')
+        except Exception as error:
+            print(f' caught {type(error)}: error')
 
     def converter(self, from_currency, to_currency, amount):
         """ Converts specified currencies """
@@ -156,6 +156,6 @@ class ConverterUi(tk.Tk):
 
 if __name__ == '__main__':
     URL = 'https://api.exchangerate-api.com/v4/latest/USD'
-    converter = RTConverter(URL)
-    ConverterUi(converter)
+    CONVERTER = RTConverter(URL)
+    ConverterUi(CONVERTER)
     mainloop()
