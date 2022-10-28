@@ -63,7 +63,8 @@ class ConverterUi(tk.Tk):
 
         self.date_label = Label(self,
                                 text=f"1 Czech Koruna = "
-                                     f"{self.curr_converter.converter('CZK', 'USD', 1)} USD \n "f"Date : "
+                                     f"{self.curr_converter.converter('CZK', 'USD', 1)} "
+                                     f"USD \n "f"Date : "
                                      f"{self.curr_converter.data['date']}",
                                 relief=tk.RIDGE,
                                 borderwidth=5)
